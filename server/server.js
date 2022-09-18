@@ -8,8 +8,25 @@ mongoose
 .connect('mongodb://localhost/garaje-live-coding')
 .then(() => console.log('Conectado a la bd'))
 
-app.get('/', (req, res) => res.json({
-    message:'Hello World oki'
-}))
+//Model
+
+const Coaster = require('./Models/Coaster.model')
+
+//Routing
+app.get('/api/', (req, res) => {
+
+    Coaster
+    .find()
+    .then(allCoasters => res.json(allCoasters))
+})
+
+app.get('/api/details/:coaster_id', (req, res) => {
+
+    const { coaster_id } = req.params
+
+    Coaster
+        .findById(coaster_id)
+        .then(coaster => res.json(coaster))
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
