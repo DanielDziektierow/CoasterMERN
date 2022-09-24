@@ -1,9 +1,22 @@
+import { response } from "express"
+import { useState } from "react"
+import { Link, useParams, useSearchParams } from "react-router-dom"
+
 const CoastersDetails = () =>{
+    
+    const {coaster_id} = useParams()
+    const [coaster, setCoaster] = useState({})
+
+    const loadCoasterDetails= () => {
+        fetch('http://localhost:5005/api/details/${coaster_id}')
+            .then(response => response.json())
+            .then(coaster => setCoaster(coaster))
+    }
     return(
         <main>
-            <h1>Bienvenidos a la coasterrs MERN</h1>
+            <h1>Estos son los detalles de {coaster.title}</h1>
             <hr/>
-            <a href="/as">Ver galeria</a>
+            <Link to="/ga">Ver galeria</Link>
         </main>
     )
 }

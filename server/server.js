@@ -12,8 +12,13 @@ mongoose
 
 const Coaster = require('./Models/Coaster.model')
 
+// CORS
+
+const cors= require('cors')
+app.use(cors())
+
 //Routing
-app.get('/api/', (req, res) => {
+app.get('/api/coasters', (req, res) => {
 
     Coaster
     .find()

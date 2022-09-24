@@ -1,21 +1,24 @@
-import './App.css';
+import './App.css'
 import IndexPage from './pages/IndexPage/IndexPage'
 import CoastersPage from './pages/CoastersPage/CoastersPage'
-import CoastersDetails from './pages/CoastersDetails/CoastersDetails'
-import {Routes, Route} from 'react-router-dom'
+import CoasterDetails from './pages/CoastersDetails/CoastersDetails'
+
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
     <div className="container">
 
       <Routes>
-        <Route path="/" element={<IndexPage/>} />
-        <Route path='/galeria' element={<CoastersPage/>} />
-        <Route path='/WE' element={<CoastersDetails/>} />
+
+        <Route path="/" element={<IndexPage />} />
+        <Route path="/galeria" element={<CoastersPage />} />
+        <Route path="/detalles/:coaster_id" element={<CoasterDetails />} />
+
       </Routes>
 
     </div>
   )
 }
 
-export default App;
+export default App
